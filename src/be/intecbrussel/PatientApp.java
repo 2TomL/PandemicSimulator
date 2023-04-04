@@ -29,7 +29,7 @@ public class PatientApp {
             List<Patient> patientList = maps.getOrDefault(i, Collections.emptyList());
             patientList.sort(Comparator.comparing(Patient::getFullName));
             for (Patient patient : patientList) {
-                System.out.println(patient);
+                System.out.print(patient);
             }
             System.out.println("\n \n____________________________________________________________________________________________________________________________________________________________________________\n \n");
         }

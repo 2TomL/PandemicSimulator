@@ -31,6 +31,7 @@ public class Patient {
     }
 
     public void setNationalRegistryNumber(String nationalRegistryNumber) {
+
         this.nationalRegistryNumber = nationalRegistryNumber;
     }
 
@@ -174,6 +175,7 @@ public class Patient {
                 .reversed());
                 return new LinkedBlockingQueue<>(listPatients);
     }
+
     public static Map<Integer, List<Patient>> oef3() {
         Queue<Patient> listPatients3 = new LinkedBlockingQueue<>(oef2());
         Map<Integer, List<Patient>> result = new HashMap<>();
@@ -192,11 +194,14 @@ public class Patient {
                 mapper = 3;
             } else if (patient.getTemperature() >= 38) {
                 mapper = 4;
-            } else listPatients3.remove();
-            continue;
+            } else {
+                listPatients3.remove();
+                continue;
+            }
+
+            result.putIfAbsent(mapper, new ArrayList<>());
+            result.get(mapper).add(listPatients3.remove());
         }
-        result.putIfAbsent(mapper, new ArrayList<>());
-        result.get(mapper).add(listPatients3.remove());
 
         System.out.println("startingQueue: " + listPatients3);
         return result;
