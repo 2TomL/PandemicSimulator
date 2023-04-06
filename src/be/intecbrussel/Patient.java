@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.stream.Collectors;
 
-public class Patient {
+public class Patient {//implements Comparator<Patient>
     private String nationalRegistryNumber;
     private String fullName;
     private int age;
@@ -87,7 +87,7 @@ public class Patient {
 
     public static List<Patient> getAllPatients() {
         List<Patient> allPatients = new ArrayList<>();
-        Patient donaldPutin = new Patient("110201321", "Donald Putin", 90, 39, false, true);
+        allPatients.add(new Patient("110201321", "Donald Putin", 90, 39, false, true));
         allPatients.add(new Patient("030201321", "Lucky Luke", 69, 38, true, false));
         allPatients.add(new Patient("030201322", "Stromae Papaoutai", 35, 40, false, true));
         allPatients.add(new Patient("030801321", "GringoireLune", 80, 36, true, true));
@@ -125,6 +125,7 @@ public class Patient {
         allPatients.add(new Patient("000201321", "Miku Hatsune", 16, 36, true, true));
         allPatients.add(new Patient("111201321", "Drake Josh", 33, 38, true, false));
         allPatients.add(new Patient("222201321", "April O'Neil", 29, 37, false, false));
+        allPatients.add(new Patient("102225433","Jenny Von Ze Block",61,40,true,true));
         return allPatients;
     }
 
@@ -169,11 +170,13 @@ public class Patient {
     public static Collection<Patient> oef2b() {
         List<Patient> listPatients = new ArrayList<>(oef2());
 
-        listPatients.sort(Comparator.comparing(Patient::isInsurance)
+        listPatients
+                .sort(Comparator.comparing(Patient::isInsurance)
                 .thenComparing((Patient p3) -> p3.getTemperature() >= 38 ? 1 : -1)
                 .thenComparing(Patient::getAge)
                 .reversed());
-                return new LinkedBlockingQueue<>(listPatients);
+
+        return new LinkedBlockingQueue<>(listPatients);
     }
 
     public static Map<Integer, List<Patient>> oef3() {

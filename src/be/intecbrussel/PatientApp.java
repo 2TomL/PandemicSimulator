@@ -11,6 +11,16 @@ public class PatientApp {
         for (Patient patient : patients1) {
             System.out.print(patient);
         }
+
+        System.out.println("\n \n____________________________________________________________________________________________________________________________________________________________________________\n \n");
+//oef1 anders
+        List<Patient>patients=Patient.getAllPatients();
+        Collection<Patient> uniquePatients = new LinkedHashSet<>(patients);
+
+        for (Patient patient :patients) {
+            System.out.println(patient +" - ");
+        }
+
         System.out.println("\n \n____________________________________________________________________________________________________________________________________________________________________________\n \n");
 
         //Oef 2
